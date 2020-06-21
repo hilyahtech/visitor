@@ -1,0 +1,4 @@
+.git
+.vscode
+tests/test.php
+vendor
