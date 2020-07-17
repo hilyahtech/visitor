@@ -20,6 +20,13 @@ class BrowserDetection
     private $BrowserName;
 
     /**
+     * Browser key name.
+     * 
+     * @var string $BrowserKey
+     */
+    private $BrowserKey;
+
+    /**
      * Browser version.
      * 
      * @var string $browserVersion
@@ -32,6 +39,13 @@ class BrowserDetection
      * @var string $platformName
      */
     private $platformName;
+
+    /**
+     * Platform key name.
+     * 
+     * @var string $platformKey
+     */
+    private $platformKey;
 
     /**
      * All browser's name (47).
@@ -128,6 +142,7 @@ class BrowserDetection
         foreach ($this->browsers as $pattern => $name) {
             if (preg_match("/" . $pattern . "/i", $this->userAgent, $match)) {
                 
+                $this->BrowserKey = $pattern;
                 $this->BrowserName = $name;
 
                 // finally get the correct version number
@@ -156,6 +171,7 @@ class BrowserDetection
 
         foreach ($this->platforms as $key => $platform) {
             if (stripos($this->userAgent, $key) !== false) {
+                $this->platformKey = $key;
                 $this->platformName = $platform;
                 break;
             }
@@ -171,6 +187,16 @@ class BrowserDetection
     public function getBrowser(): string
     {
         return $this->BrowserName ?: 'unknown';
+    }
+
+    /**
+     * Retrieve browser's key name.
+     * 
+     * @return string
+     */
+    public function getKeyBrowser(): string
+    {
+        return $this->BrowserKey ?: 'unknown';
     }
 
     /**
@@ -190,6 +216,16 @@ class BrowserDetection
     public function getPlatform(): string
     {
         return $this->platformName ?: 'unknown';
+    }
+
+    /**
+     * Retrieve platform's key name.
+     * 
+     * @return string
+     */
+    public function getKeyPlatform(): string
+    {
+        return $this->platformKey ?: 'unknown';
     }
 
     /**

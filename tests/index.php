@@ -6,4 +6,4 @@ use HilyahTech\Visitor\Visit;
 
 $visit = new Visit();
 
-echo $visit->country();
+echo $visit->countryCode();

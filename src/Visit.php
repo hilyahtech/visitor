@@ -31,6 +31,11 @@ class Visit
     {
         return $this->browserDetection()->getBrowser();
     }
+    
+    public function keyBrowser()
+    {
+        return $this->browserDetection()->getKeyBrowser();
+    }
 
     public function version()
     {
@@ -40,6 +45,11 @@ class Visit
     public function platform()
     {
         return $this->browserDetection()->getPlatform();
+    }
+
+    public function keyPlatform()
+    {
+        return $this->browserDetection()->getKeyPlatform();
     }
 
     public function userAgent()
