@@ -64,7 +64,8 @@ class Visit
 
     public function countryCode()
     {
-        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        $browserlang = isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2) : null;
+        return $browserlang;
     }
 
     public function getCountryCode($key)
